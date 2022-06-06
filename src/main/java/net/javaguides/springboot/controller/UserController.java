@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/users-location")
+    @GetMapping("/users-location")   // REST API endpoint url
     public List<UserLocationDTO> allUsersLocation() {
         return userService.getAllUsersLocation();
     }
