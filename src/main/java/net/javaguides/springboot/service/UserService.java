@@ -15,7 +15,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    private List<UserLocationDTO> getAllUsersLocation(){
+    public List<UserLocationDTO> getAllUsersLocation(){
         return userRepository.findAll()
                 .stream()
                 .map(this::convertEntityToDto)
