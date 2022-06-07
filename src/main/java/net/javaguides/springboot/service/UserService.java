@@ -3,6 +3,7 @@ package net.javaguides.springboot.service;
 import net.javaguides.springboot.dto.UserLocationDTO;
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public List<UserLocationDTO> getAllUsersLocation(){
         return userRepository.findAll()
