@@ -4,13 +4,20 @@ import net.javaguides.springboot.model.Location;
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.LocationRepository;
 import net.javaguides.springboot.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringbootDtoTutorialApplication implements CommandLineRunner {
+
+	@Bean  // make ModelMapper class as a spring bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootDtoTutorialApplication.class, args);
