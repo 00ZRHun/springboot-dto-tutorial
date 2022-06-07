@@ -26,7 +26,7 @@ public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 	@Autowired
 	private UserRepository userRepository;
 
-//	@Autowired
+	@Autowired
 	private LocationRepository locationRepository;
 
 	@Override

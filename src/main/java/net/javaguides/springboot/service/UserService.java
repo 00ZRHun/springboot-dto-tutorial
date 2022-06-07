@@ -4,6 +4,7 @@ import net.javaguides.springboot.dto.UserLocationDTO;
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,8 @@ public class UserService {
 
     // convert with only 1 LOC
     private UserLocationDTO convertEntityToDto(User user) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);  // lib can easily locate & match properties
         UserLocationDTO userLocationDTO = new UserLocationDTO();
         userLocationDTO = modelMapper.map(user, UserLocationDTO.class);
         return userLocationDTO;
