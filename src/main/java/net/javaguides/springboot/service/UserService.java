@@ -27,6 +27,7 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    // === 1. JPA Entity Model to DTO ===
     // write code to manually convert User JPA entity to UserLocationDTO
     /*private UserLocationDTO convertEntityToDto(User user) {
         UserLocationDTO userLocationDTO = new UserLocationDTO();
@@ -42,8 +43,15 @@ public class UserService {
     private UserLocationDTO convertEntityToDto(User user) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);  // lib can easily locate & match properties
-        UserLocationDTO userLocationDTO = new UserLocationDTO();
-        userLocationDTO = modelMapper.map(user, UserLocationDTO.class);
+        UserLocationDTO userLocationDTO = modelMapper.map(user, UserLocationDTO.class);
         return userLocationDTO;
+    }
+
+    // === 2. DTO to JPA Entity Model  ===
+    private User convertDtoToEntity(UserLocationDTO userLocationDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);  // lib can easily locate & match properties
+        User user = modelMapper.map(userLocationDTO, User.class);
+        return user;
     }
 }
