@@ -26,13 +26,21 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    private UserLocationDTO convertEntityToDto(User user) {
+    // write code to manually convert User JPA entity to UserLocationDTO
+    /*private UserLocationDTO convertEntityToDto(User user) {
         UserLocationDTO userLocationDTO = new UserLocationDTO();
         userLocationDTO.setUserId(user.getId());
         userLocationDTO.setEmail(user.getEmail());
         userLocationDTO.setPlace(user.getLocation().getPlace());
         userLocationDTO.setLongitude(user.getLocation().getLongitude());
         userLocationDTO.setLatitude(user.getLocation().getLatitude());
+        return userLocationDTO;
+    }*/
+
+    // convert with only 1 LOC
+    private UserLocationDTO convertEntityToDto(User user) {
+        UserLocationDTO userLocationDTO = new UserLocationDTO();
+        userLocationDTO = modelMapper.map(user, UserLocationDTO.class);
         return userLocationDTO;
     }
 }

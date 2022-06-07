@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 
-	@Bean  // make ModelMapper class as a spring bean
+	@Bean  // make/configure ModelMapper class as a spring bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
