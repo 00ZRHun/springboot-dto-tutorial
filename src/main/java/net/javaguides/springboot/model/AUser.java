@@ -1,17 +1,19 @@
 package net.javaguides.springboot.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class AUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -27,9 +29,17 @@ public class User {
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id")
-    private Location location;
+    private BLocation location;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
-    private OccupationModel occupation;
+    private COccupationCategory occupation;
+
+    @Column(name = "created")
+    @JsonFormat(pattern="dd-MMM-yyyy HH:mm:ss")
+    private LocalDateTime created = LocalDateTime.now();
+
+    @Column(name = "updated")
+    @JsonFormat(pattern="dd-MMM-yyyy HH:mm:ss")
+    private LocalDateTime updated;
 }

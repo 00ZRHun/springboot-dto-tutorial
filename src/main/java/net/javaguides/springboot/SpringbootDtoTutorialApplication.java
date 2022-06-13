@@ -1,11 +1,11 @@
 package net.javaguides.springboot;
 
-import net.javaguides.springboot.model.Location;
-import net.javaguides.springboot.model.OccupationModel;
-import net.javaguides.springboot.model.User;
-import net.javaguides.springboot.repository.LocationRepository;
-import net.javaguides.springboot.repository.OccupationRepository;
-import net.javaguides.springboot.repository.UserRepository;
+import net.javaguides.springboot.model.BLocation;
+import net.javaguides.springboot.model.COccupationCategory;
+import net.javaguides.springboot.model.AUser;
+import net.javaguides.springboot.repository.BLocationRepository;
+import net.javaguides.springboot.repository.COccupationCategoryRepository;
+import net.javaguides.springboot.repository.AUserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,30 +26,30 @@ public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-	private UserRepository userRepository;
+	private AUserRepository userRepository;
 
 	@Autowired
-	private LocationRepository locationRepository;
+	private BLocationRepository locationRepository;
 
 	@Autowired
-	private OccupationRepository occupationRepository;
+	private COccupationCategoryRepository occupationRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
 
-		Location location = new Location();
+		BLocation location = new BLocation();
 		location.setPlace("Prune");
 		location.setDescription("Prune is a great place to live");
 		location.setLongitude(40.5);
 		location.setLatitude(30.6);
 		locationRepository.save(location);
 
-		OccupationModel occupation = new OccupationModel();
+		COccupationCategory occupation = new COccupationCategory();
 		occupation.setName("Software Engineer");
 		occupation.setDescription("develop software system");
 		occupationRepository.save(occupation);
 
-		User user1 = new User();
+		AUser user1 = new AUser();
 		user1.setFirstName("Ramesh");
 		user1.setLastName("Radatare");
 		user1.setEmail("ramesh@gmail.com");

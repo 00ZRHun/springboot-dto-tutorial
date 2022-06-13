@@ -10,13 +10,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "location")
-public class Location {
+@Table(name = "occupation")
+public class COccupationCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String place;
+    private String name;
     private String description;
-    private double longitude;
-    private double latitude;
 }
