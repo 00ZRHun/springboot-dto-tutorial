@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "occupation")
-public class Occupation {
+public class OccupationModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

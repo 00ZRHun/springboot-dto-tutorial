@@ -26,10 +26,10 @@ public class User {
     private String password;
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "id")
     private Location location;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "occupation_id")
-    private Occupation occupation;
+    @JoinColumn(name = "id")
+    private OccupationModel occupation;
 }

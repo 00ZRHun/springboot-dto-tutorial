@@ -1,7 +1,7 @@
 package net.javaguides.springboot;
 
 import net.javaguides.springboot.model.Location;
-import net.javaguides.springboot.model.Occupation;
+import net.javaguides.springboot.model.OccupationModel;
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.LocationRepository;
 import net.javaguides.springboot.repository.OccupationRepository;
@@ -44,7 +44,7 @@ public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 		location.setLatitude(30.6);
 		locationRepository.save(location);
 
-		Occupation occupation = new Occupation();
+		OccupationModel occupation = new OccupationModel();
 		occupation.setName("Software Engineer");
 		occupation.setDescription("develop software system");
 		occupationRepository.save(occupation);
