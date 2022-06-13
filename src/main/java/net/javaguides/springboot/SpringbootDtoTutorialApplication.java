@@ -1,8 +1,10 @@
 package net.javaguides.springboot;
 
 import net.javaguides.springboot.model.Location;
+import net.javaguides.springboot.model.Occupation;
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.LocationRepository;
+import net.javaguides.springboot.repository.OccupationRepository;
 import net.javaguides.springboot.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 	@Autowired
 	private LocationRepository locationRepository;
 
+	@Autowired
+	private OccupationRepository occupationRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -39,20 +44,27 @@ public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 		location.setLatitude(30.6);
 		locationRepository.save(location);
 
+		Occupation occupation = new Occupation();
+		occupation.setName("Software Engineer");
+		occupation.setDescription("develop software system");
+		occupationRepository.save(occupation);
+
 		User user1 = new User();
 		user1.setFirstName("Ramesh");
 		user1.setLastName("Radatare");
 		user1.setEmail("ramesh@gmail.com");
 		user1.setPassword("secret");
 		user1.setLocation(location);
+		user1.setOccupation(occupation);
 		userRepository.save(user1);
 
-		User user2 = new User();
+		/*User user2 = new User();
 		user2.setFirstName("John");
 		user2.setLastName("Cena");
 		user2.setEmail("john@gmail.com");
 		user2.setPassword("secret");
 		user2.setLocation(location);
-		userRepository.save(user2);
+		user2.setOccupation(occupation);
+		userRepository.save(user2);*/
 	}
 }

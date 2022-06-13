@@ -40,8 +40,8 @@ public class UserService {
 
     // convert with only 1 LOC
     private UserLocationDTO convertEntityToDto(User user) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);  // lib can easily locate & match properties
+        /*modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);  // lib can easily locate & match properties*/
         UserLocationDTO userLocationDTO = new UserLocationDTO();
         userLocationDTO = modelMapper.map(user, UserLocationDTO.class);
         return userLocationDTO;

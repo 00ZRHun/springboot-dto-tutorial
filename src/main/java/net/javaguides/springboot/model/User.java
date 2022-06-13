@@ -25,7 +25,11 @@ public class User {
 
     private String password;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "location_id")
     private Location location;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "occupation_id")
+    private Occupation occupation;
 }
