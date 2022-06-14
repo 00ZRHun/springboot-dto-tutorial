@@ -3,6 +3,12 @@ package net.javaguides.springboot;
 import net.javaguides.springboot.model.Location;
 import net.javaguides.springboot.model.OccupationModel;
 import net.javaguides.springboot.model.User;
+import net.javaguides.springboot.models.Address;
+import net.javaguides.springboot.models.Customer;
+import net.javaguides.springboot.models.Order;
+import net.javaguides.springboot.repositories.AddressRepository;
+import net.javaguides.springboot.repositories.CustomerRepository;
+import net.javaguides.springboot.repositories.OrderRepository;
 import net.javaguides.springboot.repository.LocationRepository;
 import net.javaguides.springboot.repository.OccupationRepository;
 import net.javaguides.springboot.repository.UserRepository;
@@ -34,10 +40,38 @@ public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 	@Autowired
 	private OccupationRepository occupationRepository;
 
+	@Autowired
+	CustomerRepository customerRepository;
+	@Autowired
+	OrderRepository orderRepository;
+	@Autowired
+	AddressRepository addressRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
 
-		Location location = new Location();
+		Customer customer = new Customer();
+		customer.setFirstName("FirstName");
+		customer.setLastName("LastName");
+		customer.setEmail("Email");
+		customerRepository.save(customer);
+
+		Address address = new Address();
+		address.setStreet("Street");
+		address.setCity("City");
+		address.setState("State");
+		addressRepository.save(address);
+
+		Order order = new Order();
+		order.setOrderItem("Item 1");
+		order.setDescription("Description 1");
+		order.setCustomer(customer);
+		order.setAddress(address);
+		orderRepository.save(order);
+
+		///
+
+		/*Location location = new Location();
 		location.setPlace("Prune");
 		location.setDescription("Prune is a great place to live");
 		location.setLongitude(40.5);
@@ -56,7 +90,7 @@ public class SpringbootDtoTutorialApplication implements CommandLineRunner {
 		user1.setPassword("secret");
 		user1.setLocation(location);
 		user1.setOccupation(occupation);
-		userRepository.save(user1);
+		userRepository.save(user1);*/
 
 		/*User user2 = new User();
 		user2.setFirstName("John");
